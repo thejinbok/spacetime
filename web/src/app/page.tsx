@@ -1,7 +1,10 @@
+import { cookies } from 'next/headers'
+
 import { Copyright } from '@/components/Copyright'
 import { Hero } from '@/components/Hero'
-import { SignIn } from '@/components/SignIn'
 import { NoMemories } from '@/components/NoMemories'
+import { Profile } from '@/components/Profile'
+import { SignIn } from '@/components/SignIn'
 
 export default function Home() {
   return (
@@ -11,7 +14,7 @@ export default function Home() {
 
         <div className="absolute bottom-0 right-2 top-0 w-2 bg-stripes"></div>
 
-        <SignIn />
+        {cookies().has('jwt') ? <Profile /> : <SignIn />}
 
         <Hero />
 
